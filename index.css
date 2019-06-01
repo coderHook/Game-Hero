@@ -1,5 +1,14 @@
+* {
+    margin: 5px;
+}
+
 img {
     width: 8rem;
     height: 8rem;
     border: 1px solid black
+}
+
+.btn-start {
+    font-size: 20px;
+    margin:50px auto
 }
