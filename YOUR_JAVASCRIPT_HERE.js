@@ -17,6 +17,12 @@ let dagger = {
 }
 
 /* ----------- F U N C T I O N S --------------*/
+function initializing(hero){
+    let name = prompt("Insert the name of Your Hero!") || "The Unknown";
+
+    hero.name = name;
+}
+
 function rest(object) {
     if (object.health === 10) { alert("Your Health was already 10") }
     object.health = 10;
@@ -46,6 +52,23 @@ function displayStats(hero) {
     body.insertAdjacentHTML('afterbegin', html);
 }
 
+// Changing the hero name
+function changeName(){
+    let newName = document.querySelector('#change-name')
+    if(!newName.value) { 
+        alert('You didnt insert a name, now you will be know as The Unknown');
+        hero.name = "The Unknown"
+    } else { 
+        hero.name = newName.value;
+    }
+    //Empty the input box.
+    newName.value = '';
+
+    let name = document.querySelector('#hero-name');
+    name.innerHTML = '';
+    name.insertAdjacentText('beforeend', hero.name);
+}
 
 /* -------------- C A L L I N G  FUNC -------------->   */
+initializing(hero);
 displayStats(hero);
