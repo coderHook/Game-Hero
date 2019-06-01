@@ -31,12 +31,21 @@ function rest(object) {
 
 function pickUpItem(hero, weapon) {
     hero.inventory.push(weapon);
+    alert("You picked a " + weapon.type + ' with damage of: ' + weapon.damage + '. Equipped It!');
+
+    displayStats(hero);
 };
 
 function equipWeapon(hero) {
     if(hero.inventory.length !== 0){
-        return hero.weapon = hero.inventory[0];
+        
+        hero.weapon = hero.inventory[0];
+
+    } else {
+        alert("You dont have a weapon to equip!");
     }
+    console.log('Weapon equipped: '+ hero.weapon);
+    displayStats(hero);
 };
 
 //displayStats --> writes your hero's name, health, weapontype, weapon damage to the page.
@@ -63,7 +72,7 @@ function changeName(){
     } else { 
         hero.name = newName.value;
     }
-    
+
     newName.value = '';
 
     displayStats(hero);
