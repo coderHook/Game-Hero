@@ -26,6 +26,7 @@ function initializing(hero){
     let name = prompt("Insert the name of Your Hero!") || "The Unknown";
     hero.name = name;
     alert('You have 3 buttons, Your hero is used to Heal yourself. To start fighting first you have to pick up your weapon and equipp it! Do SO!');
+
 }
 
 function rest(object) {
@@ -35,7 +36,7 @@ function rest(object) {
 };
 
 function pickUpItem(hero, weapon) {
-    console.log(weapon);
+    console.log('You have picked: ' + weapon.type);
     hero.inventory.push(weapon);
  
     if(weapon.type) { 
@@ -57,10 +58,12 @@ function equipWeapon(hero) {
     displayStats(hero);
     //Call function to display enemies.
     if (insert_enemies) {
+
         displayEnemies();
         insert_enemies = false;
     }
     
+    console.log("you have equipped your weapon! Now Fight!")
 };
 
 //Display enemies
@@ -70,6 +73,7 @@ function displayEnemies(){
     
     for(let i = 0; i < numberOfEnemies; i++){
         let enemiesIMG = `<img src="./images/enemies/${i+1}.png" alt="" id="enemy${i+1}" onclick="fight(${i+1})" />`;
+        
         arena.insertAdjacentHTML('beforeend',enemiesIMG);
     }
 }
@@ -77,7 +81,7 @@ function displayEnemies(){
 // Fight Enemies
 function fight(id){
     
-    console.log('Im here');
+    console.log('Fighting Monster: ' + id);
     let enemy = document.querySelector(`#enemy${id}`);
     console.log(enemy);
     enemy.style.display = 'none';
@@ -128,12 +132,27 @@ function changeName(){
 
     newName.value = '';
 
+    console.log("You have Changed your Name to: " + hero.name);
+
     displayStats(hero);
+
 }
 
 function startGame(){
+
     initializing(hero);
+    hero.weapon.type = '';
     displayStats(hero);
+    let dagger = document.getElementById('dagger');
+    dagger.style.display = 'inline';
+    let form = document.querySelector(".form");
+    form.style.visibility = 'visible';
+
+    //title-fight hero-imgs
+    let heroimgs = document.querySelector('.hero-imgs');
+    heroimgs.style.visibility = 'visible';
+
+    console.log("Remeber, Pick your weapon, and equipe it with the green button");
 }
 
 /* -------------- C A L L I N G  FUNC -------------->   */

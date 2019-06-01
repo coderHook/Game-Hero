@@ -9,27 +9,34 @@
 
 
   <!-- 👍 YOUR HTML HERE 👍 -->
-  <button onclick="startGame()">Start The Game</button>
+  <button class="btn-start" onclick="startGame()" >Start The Game</button>
   <div class="stats">
 
   </div>
 
-  <form onsubmit="changeName(); return false">
-    <div class="formSection">
-      <label for="change-name">Change your Hero name: </label>
-      <input type="text" id="change-name">
-    </div>
-    <div class="button">
-      <button type="submit">Edit Name</button>
-    </div>
-  </form>
+  <div class="form" style="visibility: hidden">
+    <form onsubmit="changeName(); return false">
+      <div class="formSection">
+        <label for="change-name">Change your Hero name: </label>
+        <input type="text" id="change-name">
+      </div>
+      <div class="button">
+        <button type="submit">Edit Name</button>
+      </div>
+    </form>
+  </div>
 
+<div class="hero-imgs" style="visibility: hidden">
   <img src="./images/hero.png" alt="" id="inn" onclick="rest(hero)">
   <img src="./images/dagger.png" alt="" id="dagger" onclick="pickUpItem(hero, dagger)">
   <img src="./images/bag.png" alt="" id="bag" onclick="equipWeapon(hero)">
 
+</div>
+ 
+  <h1 class="title-fight">Pick a Monster to Fight Agains him</h1>
+
   <div id="arena">
-    <h1>Pick a Monster to Fight Agains him</h1>
+
 
 
   </div>
