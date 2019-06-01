@@ -32,6 +32,8 @@ function rest(object) {
 };
 
 function pickUpItem(hero, weapon) {
+    let weapon_picked = document.getElementById(weapon.type);
+    weapon_picked.style.display = 'none';
     hero.inventory.push(weapon);
     alert("You picked a " + weapon.type + ' with damage of: ' + weapon.damage + '. Equipped It!');
 
