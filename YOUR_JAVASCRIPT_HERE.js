@@ -16,11 +16,13 @@ let dagger = {
     damage: 2
 }
 
+
 /* ----------- F U N C T I O N S --------------*/
 function initializing(hero){
+    alert("I am called The MAster, and I would guide you through your Mission");
     let name = prompt("Insert the name of Your Hero!") || "The Unknown";
-
     hero.name = name;
+    alert('You have 3 buttons, Your hero is used to Heal yourself. To start fighting first you have to pick up your weapon and equipp it! Do SO!');
 }
 
 function rest(object) {
@@ -44,9 +46,23 @@ function equipWeapon(hero) {
     } else {
         alert("You dont have a weapon to equip!");
     }
-    console.log('Weapon equipped: '+ hero.weapon);
+    alert('Weapon equipped!, You are ready to Fight!');
     displayStats(hero);
+    //Call function to display enemies.
+    displayEnemies();
 };
+
+//Display enemies
+function displayEnemies(){
+    let numberOfEnemies = 6;
+    let arena = document.querySelector('#arena');
+    
+
+    for(let i = 0; i < numberOfEnemies; i++){
+        let enemiesIMG = `<img src="./images/enemies/${i+1}.png" alt="" id="${i+1}" onclick="" />`;
+        arena.insertAdjacentHTML('beforeend',enemiesIMG);
+    }
+}
 
 //displayStats --> writes your hero's name, health, weapontype, weapon damage to the page.
 function displayStats(hero) {
