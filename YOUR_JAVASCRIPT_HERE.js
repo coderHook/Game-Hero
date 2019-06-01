@@ -54,14 +54,14 @@ function displayStats(hero) {
 
 // Changing the hero name
 function changeName(){
-    console.log('im here');
     let newName = document.querySelector('#change-name')
     hero.name = newName.value;
+    //Empty the input box.
+    newName.value = '';
+
     let name = document.querySelector('#hero-name');
     name.innerHTML = '';
     name.insertAdjacentText('beforeend', hero.name);
-    console.log(name.value);
-    //Empty the name
 }
 
 /* -------------- C A L L I N G  FUNC -------------->   */
