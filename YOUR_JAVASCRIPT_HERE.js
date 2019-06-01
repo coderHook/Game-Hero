@@ -59,9 +59,18 @@ function displayEnemies(){
     
 
     for(let i = 0; i < numberOfEnemies; i++){
-        let enemiesIMG = `<img src="./images/enemies/${i+1}.png" alt="" id="${i+1}" onclick="" />`;
+        let enemiesIMG = `<img src="./images/enemies/${i+1}.png" alt="" id="enemy${i+1}" onclick="fight(${i+1})" />`;
         arena.insertAdjacentHTML('beforeend',enemiesIMG);
     }
+}
+
+// Fight Enemies
+function fight(id){
+    console.log('Im here');
+    let enemy = document.querySelector(`#enemy${id}`);
+    console.log(enemy);
+    enemy.style.display = 'none';
+    alert("You have killed enemy " + id);
 }
 
 //displayStats --> writes your hero's name, health, weapontype, weapon damage to the page.
@@ -95,5 +104,5 @@ function changeName(){
 }
 
 /* -------------- C A L L I N G  FUNC -------------->   */
-initializing(hero);
+//initializing(hero);
 displayStats(hero);
