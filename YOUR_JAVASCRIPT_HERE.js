@@ -16,7 +16,8 @@ let dagger = {
     damage: 2
 }
 
-let kills = 0
+let kills = 0;
+let insert_enemies = true;
 const numberOfEnemies = 6;
 
 /* ----------- F U N C T I O N S --------------*/
@@ -55,7 +56,11 @@ function equipWeapon(hero) {
     //alert('Weapon equipped!, You are ready to Fight!');
     displayStats(hero);
     //Call function to display enemies.
-    displayEnemies();
+    if (insert_enemies) {
+        displayEnemies();
+        insert_enemies = false;
+    }
+    
 };
 
 //Display enemies
@@ -63,7 +68,6 @@ function displayEnemies(){
 
     let arena = document.querySelector('#arena');
     
-
     for(let i = 0; i < numberOfEnemies; i++){
         let enemiesIMG = `<img src="./images/enemies/${i+1}.png" alt="" id="enemy${i+1}" onclick="fight(${i+1})" />`;
         arena.insertAdjacentHTML('beforeend',enemiesIMG);
@@ -91,6 +95,8 @@ function fight(id){
                 type: '',
                 damage: 2
             }
+        
+
         };
     }
 }
