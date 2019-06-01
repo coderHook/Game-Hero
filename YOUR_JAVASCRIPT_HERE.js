@@ -16,6 +16,8 @@ let dagger = {
     damage: 2
 }
 
+let kills = 0
+const numberOfEnemies = 6;
 
 /* ----------- F U N C T I O N S --------------*/
 function initializing(hero){
@@ -32,12 +34,14 @@ function rest(object) {
 };
 
 function pickUpItem(hero, weapon) {
-    let weapon_picked = document.getElementById(weapon.type);
-    weapon_picked.style.display = 'none';
+    console.log(weapon);
     hero.inventory.push(weapon);
-    alert("You picked a " + weapon.type + ' with damage of: ' + weapon.damage + '. Equipped It!');
-
-    displayStats(hero);
+ 
+    if(weapon.type) { 
+        let weapon_picked = document.getElementById(weapon.type);
+        weapon_picked.style.display = 'none';
+        displayStats(hero);
+    }
 };
 
 function equipWeapon(hero) {
@@ -46,9 +50,9 @@ function equipWeapon(hero) {
         hero.weapon = hero.inventory[0];
 
     } else {
-        alert("You dont have a weapon to equip!");
+        //alert("You dont have a weapon to equip!");
     }
-    alert('Weapon equipped!, You are ready to Fight!');
+    //alert('Weapon equipped!, You are ready to Fight!');
     displayStats(hero);
     //Call function to display enemies.
     displayEnemies();
@@ -56,7 +60,7 @@ function equipWeapon(hero) {
 
 //Display enemies
 function displayEnemies(){
-    let numberOfEnemies = 6;
+
     let arena = document.querySelector('#arena');
     
 
@@ -68,11 +72,27 @@ function displayEnemies(){
 
 // Fight Enemies
 function fight(id){
+    
     console.log('Im here');
     let enemy = document.querySelector(`#enemy${id}`);
     console.log(enemy);
     enemy.style.display = 'none';
-    alert("You have killed enemy " + id);
+    console.log("You have killed enemy " + id);
+    //Counter to count the kills
+    kills++
+    if (kills === numberOfEnemies) {
+        alert("Congratulations you have WON the game!");
+        hero = {
+            name: '',
+            heroic: true,
+            inventory: [],
+            health: 10,
+            weapon: {
+                type: '',
+                damage: 2
+            }
+        };
+    }
 }
 
 //displayStats --> writes your hero's name, health, weapontype, weapon damage to the page.
@@ -94,7 +114,7 @@ function displayStats(hero) {
 function changeName(){
     let newName = document.querySelector('#change-name')
     if(!newName.value) { 
-        alert('You didnt insert a name, now you will be know as The Unknown');
+        //alert('You didnt insert a name, now you will be know as The Unknown');
         hero.name = "The Unknown"
     } else { 
         hero.name = newName.value;
@@ -105,6 +125,10 @@ function changeName(){
     displayStats(hero);
 }
 
+function startGame(){
+    initializing(hero);
+    displayStats(hero);
+}
+
 /* -------------- C A L L I N G  FUNC -------------->   */
-//initializing(hero);
-displayStats(hero);
+
