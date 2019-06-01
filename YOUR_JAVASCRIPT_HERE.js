@@ -41,15 +41,17 @@ function equipWeapon(hero) {
 
 //displayStats --> writes your hero's name, health, weapontype, weapon damage to the page.
 function displayStats(hero) {
-    let html = `<div class="stats">
-                    <h3 id="hero-name">${hero.name}</h3>
-                    <p>Health: <span id="health">${hero.health}</span></p>
-                    <p>Weapon: <span id="weapon">${hero.weapon.type}</span></p>
-                    <p>Damage: <span id="damage">${hero.weapon.damage}</span></p>
-                </div>`;
+    let stats = document.querySelector('.stats');
+    stats.innerHTML = '';
 
-    let body = document.querySelector('body');
-    body.insertAdjacentHTML('afterbegin', html);
+    let html = `
+                <h3 id="hero-name">${hero.name}</h3>
+                <p>Health: <span id="health">${hero.health}</span></p>
+                <p>Weapon: <span id="weapon">${hero.weapon.type}</span></p>
+                <p>Damage: <span id="damage">${hero.weapon.damage}</span></p>
+                `;
+
+    stats.insertAdjacentHTML('afterbegin', html);
 }
 
 // Changing the hero name
@@ -61,12 +63,10 @@ function changeName(){
     } else { 
         hero.name = newName.value;
     }
-    //Empty the input box.
+    
     newName.value = '';
 
-    let name = document.querySelector('#hero-name');
-    name.innerHTML = '';
-    name.insertAdjacentText('beforeend', hero.name);
+    displayStats(hero);
 }
 
 /* -------------- C A L L I N G  FUNC -------------->   */
