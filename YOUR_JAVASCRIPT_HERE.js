@@ -55,7 +55,12 @@ function displayStats(hero) {
 // Changing the hero name
 function changeName(){
     let newName = document.querySelector('#change-name')
-    hero.name = newName.value;
+    if(!newName.value) { 
+        alert('You didnt insert a name, now you will be know as The Unknown');
+        hero.name = "The Unknown"
+    } else { 
+        hero.name = newName.value;
+    }
     //Empty the input box.
     newName.value = '';
 
