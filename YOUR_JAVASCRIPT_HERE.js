@@ -151,7 +151,8 @@ function startGame(){
     //title-fight hero-imgs
     let heroimgs = document.querySelector('.hero-imgs');
     heroimgs.style.visibility = 'visible';
-
+    let titlefight = document.querySelector('.title-fight');
+    titlefight.style.visibility = 'visible'
     console.log("Remeber, Pick your weapon, and equipe it with the green button");
 }
 
